@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String?  // Hashed password (null for OAuth users)
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  resumes Resume[]
+  jobs    Job[]     @relation("JobPoster")
+
+  @@map("users")
+}
+
+model Resume {
+  id        String   @id @default(cuid())
+  userId    String
+  url       String   // Storage URL
+  fileName  String
+  fileSize  Int      // Size in bytes
+  parsed    Json?    // Parsed resume data (JSON)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matches Match[]
+
+  @@map("resumes")
+}
+
+model Job {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  company     String?
+  location    String?
+  jobType     JobType  @default(FULL_TIME)
+  requiredSkills Json  // Array of skills
+  yearsOfExperience Int?
+  salaryMin   Int?
+  salaryMax   Int?
+  postedById  String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  postedBy User    @relation("JobPoster", fields: [postedById], references: [id])
+  matches  Match[]
+
+  @@map("jobs")
+}
+
+model Match {
+  id            String   @id @default(cuid())
+  resumeId      String
+  jobId         String
+  overallScore  Float    // 0-1
+  semanticScore Float    // 0-1
+  skillsScore   Float    // 0-1
+  details       Json?    // Additional match details
+  feedback      String?  @db.Text // LLM-generated feedback
+  createdAt     DateTime @default(now())
+
+  resume Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  job    Job    @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([resumeId, jobId])
+  @@map("matches")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  REMOTE
+  HYBRID
+}
+
