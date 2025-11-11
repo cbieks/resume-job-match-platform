@@ -98,6 +98,23 @@ export default function SignUpPage() {
                 placeholder="At least 6 characters"
               />
             </div>
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+                I am a
+              </label>
+              <select
+                id="role"
+                name="role"
+                required
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              >
+                <option value="USER">Job Seeker</option>
+                <option value="RECRUITER">Recruiter / Company</option>
+              </select>
+              <p className="mt-1 text-xs text-gray-500">
+                Recruiters can post and import jobs. Job seekers can upload resumes and match with jobs.
+              </p>
+            </div>
           </div>
 
           <div>

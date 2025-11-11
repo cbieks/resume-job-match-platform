@@ -83,6 +83,7 @@ model Match {
 
 enum Role {
   USER
+  RECRUITER
   ADMIN
 }
 

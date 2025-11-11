@@ -122,11 +122,34 @@ function SignInForm() {
             </Button>
           </div>
         </form>
-        <div className="text-center text-sm text-gray-600">
-          <p>Test account:</p>
-          <p className="font-mono text-xs mt-1">
-            admin@example.com / admin123
+        <div className="mt-6 border-t border-gray-200 pt-6">
+          <p className="text-center text-sm font-medium text-gray-700 mb-3">
+            Demo Accounts:
           </p>
+          <div className="space-y-2">
+            <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
+              <p className="text-xs font-semibold text-blue-900 mb-1">
+                🏢 Demo Recruiter
+              </p>
+              <p className="font-mono text-xs text-blue-800">
+                recruiter@demo.com / demo123
+              </p>
+              <p className="text-xs text-blue-700 mt-1">
+                Can post and import jobs
+              </p>
+            </div>
+            <div className="bg-green-50 border border-green-200 rounded-md p-3">
+              <p className="text-xs font-semibold text-green-900 mb-1">
+                👤 Demo Job Seeker
+              </p>
+              <p className="font-mono text-xs text-green-800">
+                jobseeker@demo.com / demo123
+              </p>
+              <p className="text-xs text-green-700 mt-1">
+                Can upload resumes and match with jobs
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

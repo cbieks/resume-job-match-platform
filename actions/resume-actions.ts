@@ -71,6 +71,28 @@ export async function getUserResumes() {
   }
 }
 
+export async function getResume(resumeId: string) {
+  try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      throw new Error("Unauthorized");
+    }
+
+    const resume = await prisma.resume.findFirst({
+      where: { id: resumeId, userId: session.user.id as string },
+    });
+
+    if (!resume) {
+      throw new Error("Resume not found");
+    }
+
+    return resume;
+  } catch (error) {
+    console.error("Error fetching resume:", error);
+    throw error;
+  }
+}
+
 export async function deleteResume(resumeId: string) {
   try {
     const session = await auth();

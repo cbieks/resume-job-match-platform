@@ -30,7 +30,28 @@ export async function matchResumeToJob(resumeId: string, jobId: string) {
 
     // Extract text and skills from parsed resume
     const parsed = resume.parsed as any;
-    const resumeText = JSON.stringify(parsed); // Simplified - should extract actual text
+    // Build resume text from parsed data for better semantic matching
+    const resumeTextParts: string[] = [];
+    
+    if (parsed?.personalInfo?.name) resumeTextParts.push(`Name: ${parsed.personalInfo.name}`);
+    if (parsed?.summary) resumeTextParts.push(`Summary: ${parsed.summary}`);
+    if (parsed?.experience && Array.isArray(parsed.experience)) {
+      const expText = parsed.experience
+        .map((exp: any) => `${exp.title || ''} at ${exp.company || ''} - ${exp.description || ''}`)
+        .join(' ');
+      resumeTextParts.push(`Experience: ${expText}`);
+    }
+    if (parsed?.education && Array.isArray(parsed.education)) {
+      const eduText = parsed.education
+        .map((edu: any) => `${edu.degree || ''} from ${edu.school || ''}`)
+        .join(' ');
+      resumeTextParts.push(`Education: ${eduText}`);
+    }
+    if (parsed?.skills && Array.isArray(parsed.skills)) {
+      resumeTextParts.push(`Skills: ${parsed.skills.join(', ')}`);
+    }
+    
+    const resumeText = resumeTextParts.join('\n\n') || JSON.stringify(parsed);
     const resumeSkills = parsed?.skills || [];
 
     const jobDescription = job.description;

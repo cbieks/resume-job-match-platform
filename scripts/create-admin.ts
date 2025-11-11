@@ -7,8 +7,9 @@ import { prisma } from "../lib/prisma";
 import bcrypt from "bcryptjs";
 
 async function createAdmin() {
-  const email = process.env.ADMIN_EMAIL || "admin@example.com";
-  const password = process.env.ADMIN_PASSWORD || "admin123";
+  // Use provided credentials or environment variables
+  const email = process.env.ADMIN_EMAIL || "cbieker@usc.edu";
+  const password = process.env.ADMIN_PASSWORD || "BaileySmells11$$";
   const name = process.env.ADMIN_NAME || "Admin User";
 
   try {
@@ -18,7 +19,23 @@ async function createAdmin() {
     });
 
     if (existing) {
-      console.log("User already exists:", email);
+      // Update existing user to ensure they're an admin with the correct password
+      console.log("Admin user already exists, updating...");
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      const updatedUser = await prisma.user.update({
+        where: { email },
+        data: {
+          password: hashedPassword,
+          role: "ADMIN",
+          name: name,
+        },
+      });
+
+      console.log("✅ Admin user updated successfully!");
+      console.log("Email:", updatedUser.email);
+      console.log("Role:", updatedUser.role);
+      console.log("Password has been updated.");
       return;
     }
 
@@ -36,7 +53,7 @@ async function createAdmin() {
     console.log("✅ Admin user created successfully!");
     console.log("Email:", user.email);
     console.log("Role:", user.role);
-    console.log("\n⚠️  Remember to change the default password!");
+    console.log("\n🔒 Admin account is secured with your password.");
   } catch (error) {
     console.error("Error creating admin user:", error);
     process.exit(1);

@@ -44,7 +44,7 @@ export default async function ResumePage() {
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">My Resumes</h1>
+            <h1 className="text-3xl font-bold text-black mb-2">My Resumes</h1>
             <p className="text-gray-600">
               Upload and manage your resumes. We'll extract key information to help match you with jobs.
             </p>

@@ -17,16 +17,16 @@ export async function createJob(data: {
   try {
     const session = await auth();
     if (!session?.user?.id) {
-      throw new Error("Unauthorized");
+      return { error: "Unauthorized" };
     }
 
-    // Check if user is admin
+    // Check if user is admin or recruiter
     const user = await prisma.user.findUnique({
       where: { id: session.user.id as string },
     });
 
-    if (user?.role !== "ADMIN") {
-      throw new Error("Only admins can create jobs");
+    if (user?.role !== "ADMIN" && user?.role !== "RECRUITER") {
+      return { error: "Only admins and recruiters can create jobs" };
     }
 
     const job = await prisma.job.create({
@@ -45,9 +45,9 @@ export async function createJob(data: {
     });
 
     return { success: true, jobId: job.id };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error creating job:", error);
-    throw error;
+    return { error: error.message || "Failed to create job" };
   }
 }
 
