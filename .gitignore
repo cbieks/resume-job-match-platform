@@ -51,3 +51,6 @@ Thumbs.db
 # Uploads (user-uploaded files)
 /public/uploads
 
+# Documentation (moved to docs/)
+# Keep setup docs in docs/ folder for developers
+

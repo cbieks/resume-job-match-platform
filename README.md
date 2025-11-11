@@ -1,113 +1,102 @@
 # AI Resume & Job Match Platform
 
-A full-stack web application that allows users to upload résumés, parse their content, compare them against job descriptions using AI and similarity metrics, and return match scores with detailed feedback.
+An intelligent web application that uses AI to match job seekers' resumes with job opportunities. Upload your resume, and our platform automatically extracts key information, compares it against job descriptions using semantic similarity and skill matching, and provides detailed match scores with actionable feedback.
 
-## Tech Stack
+## 🎯 What It Does
 
-- **Frontend**: Next.js 14 (App Router), React, TypeScript, Tailwind CSS
-- **Backend**: Next.js Server Actions
+This platform helps both job seekers and recruiters:
+
+- **For Job Seekers**: Upload your resume and instantly see how well it matches available job postings, with detailed feedback on strengths and areas for improvement.
+- **For Recruiters**: Post job openings and automatically receive ranked candidate matches based on AI-powered analysis.
+
+## ✨ Key Features
+
+### Resume Management
+- **PDF Upload**: Simply upload your resume in PDF format
+- **Automatic Parsing**: AI extracts key information including:
+  - Contact information (name, email, phone)
+  - Skills and technologies
+  - Work experience
+  - Education history
+- **Resume Storage**: Securely store and manage multiple resume versions
+
+### Job Matching
+- **AI-Powered Matching**: Uses OpenAI embeddings to understand semantic meaning
+- **Multi-Factor Scoring**:
+  - **Semantic Similarity** (60%): How well your resume's meaning matches the job description
+  - **Skills Match** (30%): Direct comparison of required vs. possessed skills
+  - **Experience Match** (10%): Years of experience alignment
+- **Detailed Feedback**: See exactly which skills match, which are missing, and get recommendations
+
+### User Experience
+- **Clean Dashboard**: Easy-to-use interface for managing resumes and viewing matches
+- **Visual Results**: Charts and graphs showing match breakdowns
+- **Secure Authentication**: Safe sign-up and login system
+- **Real-time Updates**: Instant feedback after uploading resumes or running matches
+
+## 🛠️ Technologies Used
+
+- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Backend**: Next.js Server Actions, Node.js
 - **Database**: PostgreSQL with Prisma ORM
 - **Authentication**: NextAuth.js
-- **AI/ML**: OpenAI Embeddings API, Affinda API (resume parsing)
-- **Visualization**: Recharts
-- **Storage**: Supabase Storage or AWS S3
+- **AI/ML**: OpenAI Embeddings API for semantic matching
+- **PDF Processing**: Custom PDF parsing with text extraction
+- **Visualization**: Recharts for data visualization
 
-## Features
+## 🚀 How to Use
 
-- ✅ User authentication and onboarding
-- ✅ Resume upload and storage
-- ✅ Resume parsing (structured data extraction)
-- ✅ Job postings management
-- ✅ AI-powered matching algorithm
-- ✅ Match results visualization
-- ✅ Admin dashboard and analytics
+### For Job Seekers
 
-## Getting Started
+1. **Sign Up**: Create a free account
+2. **Upload Resume**: Go to your dashboard and upload your resume (PDF format)
+3. **Browse Jobs**: Explore available job postings
+4. **View Matches**: Click "Match Resume" on any job to see your compatibility score
+5. **Review Feedback**: See detailed breakdown of:
+   - Overall match percentage
+   - Skills you have vs. skills needed
+   - Recommendations for improvement
 
-### Prerequisites
+### For Recruiters/Admins
 
-- Node.js 18+ and npm/yarn
-- PostgreSQL database (local or hosted)
-- OpenAI API key
-- (Optional) Affinda API key for resume parsing
+1. **Sign Up as Admin**: Create an admin account
+2. **Post Jobs**: Add job postings with descriptions and required skills
+3. **View Matches**: See how candidates' resumes match your job requirements
+4. **Review Candidates**: Access detailed match analysis for each candidate
 
-### Installation
+## 📊 Match Score Breakdown
 
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd resume-job-match-platform
-```
+When you match a resume to a job, you'll see:
 
-2. Install dependencies:
-```bash
-npm install
-```
+- **Overall Score**: A percentage showing overall compatibility (0-100%)
+- **Semantic Score**: How well the resume's content matches the job description's meaning
+- **Skills Score**: Percentage of required skills that match
+- **Matched Skills**: List of skills you have that the job requires
+- **Missing Skills**: Skills the job requires that you don't have (yet!)
 
-3. Set up environment variables:
-```bash
-cp .env.example .env.local
-# Edit .env.local with your configuration
-```
+## 🔒 Security & Privacy
 
-4. Set up the database:
-```bash
-# Generate Prisma client
-npm run db:generate
+- Secure password hashing
+- Session-based authentication
+- File upload validation
+- User data protection
+- GDPR-compliant data handling
 
-# Push schema to database
-npm run db:push
+## 📈 Future Enhancements
 
-# Or run migrations
-npm run db:migrate
-```
+- Email notifications for new matching jobs
+- Advanced resume editing capabilities
+- Integration with job boards
+- Resume templates and suggestions
+- Interview preparation tips based on job requirements
 
-5. Run the development server:
-```bash
-npm run dev
-```
+## 🎨 Design Highlights
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+- Modern, responsive design that works on all devices
+- Intuitive user interface
+- Clean data visualization
+- Fast and efficient performance
 
-## Project Structure
+---
 
-```
-resume-job-match-platform/
-├── app/                    # Next.js App Router pages
-│   ├── (auth)/            # Authentication routes
-│   ├── (dashboard)/       # Protected dashboard routes
-│   ├── api/               # API routes
-│   └── layout.tsx         # Root layout
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
-│   └── features/         # Feature-specific components
-├── lib/                   # Utility functions and configurations
-│   ├── prisma.ts         # Prisma client
-│   ├── auth.ts           # NextAuth configuration
-│   ├── matching.ts       # Matching algorithm
-│   └── storage.ts        # File storage utilities
-├── actions/               # Server actions
-│   ├── resume-actions.ts
-│   ├── job-actions.ts
-│   └── match-actions.ts
-├── prisma/                # Prisma schema and migrations
-│   └── schema.prisma
-└── public/                # Static assets
-```
-
-## Development
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:studio` - Open Prisma Studio
-
-## Documentation
-
-See [DOCUMENT_CLARIFICATIONS.md](./DOCUMENT_CLARIFICATIONS.md) for detailed explanations of the architecture, features, and implementation details.
-
-## License
-
-MIT
-
+**Built with modern web technologies to demonstrate full-stack development skills, AI integration, and user-centered design.**
