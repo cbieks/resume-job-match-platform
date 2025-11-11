@@ -1,15 +1,15 @@
 # AI Resume & Job Match Platform
 
-An intelligent web application that uses AI to match job seekers' resumes with job opportunities. Upload your resume, and our platform automatically extracts key information, compares it against job descriptions using semantic similarity and skill matching, and provides detailed match scores with actionable feedback.
+An intelligent web application that uses AI to match job seekers' resumes with job opportunities. Upload your resume, and my platform automatically extracts key information, compares it against job descriptions using semantic similarity and skill matching, and provides detailed match scores with actionable feedback.
 
-## 🎯 What It Does
+## What It Does
 
 This platform helps both job seekers and recruiters:
 
 - **For Job Seekers**: Upload your resume and instantly see how well it matches available job postings, with detailed feedback on strengths and areas for improvement.
 - **For Recruiters**: Post job openings and automatically receive ranked candidate matches based on AI-powered analysis.
 
-## ✨ Key Features
+## Key Features
 
 ### Resume Management
 - **PDF Upload**: Simply upload your resume in PDF format
@@ -34,7 +34,7 @@ This platform helps both job seekers and recruiters:
 - **Secure Authentication**: Safe sign-up and login system
 - **Real-time Updates**: Instant feedback after uploading resumes or running matches
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
 - **Backend**: Next.js Server Actions, Node.js
@@ -44,7 +44,7 @@ This platform helps both job seekers and recruiters:
 - **PDF Processing**: Custom PDF parsing with text extraction
 - **Visualization**: Recharts for data visualization
 
-## 🚀 How to Use
+## How to Use
 
 ### For Job Seekers
 
@@ -64,7 +64,7 @@ This platform helps both job seekers and recruiters:
 3. **View Matches**: See how candidates' resumes match your job requirements
 4. **Review Candidates**: Access detailed match analysis for each candidate
 
-## 📊 Match Score Breakdown
+## Match Score Breakdown
 
 When you match a resume to a job, you'll see:
 
@@ -74,7 +74,7 @@ When you match a resume to a job, you'll see:
 - **Matched Skills**: List of skills you have that the job requires
 - **Missing Skills**: Skills the job requires that you don't have (yet!)
 
-## 🔒 Security & Privacy
+## Security & Privacy
 
 - Secure password hashing
 - Session-based authentication
@@ -82,7 +82,7 @@ When you match a resume to a job, you'll see:
 - User data protection
 - GDPR-compliant data handling
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 - Email notifications for new matching jobs
 - Advanced resume editing capabilities
@@ -90,7 +90,7 @@ When you match a resume to a job, you'll see:
 - Resume templates and suggestions
 - Interview preparation tips based on job requirements
 
-## 🎨 Design Highlights
+## Design Highlights
 
 - Modern, responsive design that works on all devices
 - Intuitive user interface
